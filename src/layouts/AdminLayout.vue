@@ -32,7 +32,9 @@
       </v-navigation-drawer>
 
       <v-main style="height: 100vh;">
-        <router-view></router-view>
+        <div class="px-6 py-6 scrollable">
+          <router-view></router-view>
+        </div>
       </v-main>
     </v-layout>
   </v-card>

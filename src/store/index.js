@@ -1,7 +1,7 @@
 import { createStore } from 'vuex'
-
-import test from './test'
 import VuexPersistence from 'vuex-persist';
+
+import userModule from './modules/userModule'
 
 export default createStore({
   state: {
@@ -11,16 +11,13 @@ export default createStore({
   mutations: {
   },
   actions: {
-    inc({ commit }) {
-      commit('test/incr', 2);
-    },
   },
   modules: {
-    test
+    userModule
   },
-  plugins: [
-    new VuexPersistence({
-      storage: window.sessionStorage // Use sessionStorage instead of localStorage
-    }).plugin
-  ]
+  // plugins: [
+  //   new VuexPersistence({
+  //     storage: window.sessionStorage // Use sessionStorage instead of localStorage
+  //   }).plugin
+  // ]
 })
