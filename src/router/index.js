@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import AdminLayout from '@/layouts/AdminLayout.vue'
-import AdminIndex from '@/pages/admin/index.vue'
-import UserIndex from '@/pages/admin/users/index.vue'
+import AdminIndex from '@/pages/admin/IndexAdmin.vue'
+import UserIndex from '@/pages/admin/users/IndexUser.vue'
+import AddUser from '@/pages/admin/users/AddUser.vue'
 
 import home from '@/pages/HomePage.vue'
 
@@ -19,8 +20,14 @@ const routes = [
         component: AdminIndex
       },
       {
-        path:"/admin/users",
+        path:"users",
+        name:'users',
         component: UserIndex
+      },
+      {
+        path:"users/add",
+        name:"addUser",
+        component: AddUser
       }
     ]
   }

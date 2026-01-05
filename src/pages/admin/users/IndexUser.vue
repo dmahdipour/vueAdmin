@@ -1,7 +1,7 @@
 <template>
   <h1>لیست کاربران</h1>
   <hr>
-  <v-btn color="success">افزودن</v-btn>
+  <v-btn @click="router.push({name: 'addUser'})" color="success">افزودن</v-btn>
   <v-table class="mt-4 elevation-2">
     <thead>
       <tr>
@@ -50,7 +50,3 @@
     store.dispatch("getUsers", {pageId:1, take:10})
   })
 </script>
-
-<style>
-
-</style>

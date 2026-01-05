@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style>
-  .v-application, .v-toolbar{
+  .v-application, .v-toolbar, .v-locale--is-ltr{
     direction: rtl !important;
   }
 </style>

@@ -28,6 +28,9 @@ export default{
             }).catch(err => {
 
             })
+        },
+        addUser({commit}, user){
+            return axios.post("/api/user", user)
         }
     }
 }

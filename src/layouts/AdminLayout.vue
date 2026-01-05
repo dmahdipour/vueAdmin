@@ -32,7 +32,7 @@
       </v-navigation-drawer>
 
       <v-main style="height: 100vh;">
-        <div class="px-6 py-6 scrollable">
+        <div class="px-6 py-6">
           <router-view></router-view>
         </div>
       </v-main>
@@ -60,5 +60,4 @@
       color:white;
       text-decoration:none;
   }
-  
 </style>
