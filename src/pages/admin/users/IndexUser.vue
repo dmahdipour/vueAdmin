@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-        <tr v-for = "user in userFilter.users" :key="user.id">
+        <tr v-for = "user in userFilter.users" :key="user.userId">
           <td>{{ user.userName }}</td>
           <td>{{ user.fullName }}</td>
           <td>
@@ -20,7 +20,7 @@
             <span v-if="user.role===0">کاربر</span>
           </td>
           <td>
-            <v-btn @click="router.push(`/admin/users/edit/${user.id}`)" color="info">ویرایش</v-btn>
+            <v-btn @click="router.push({name:'editUser', params:{id:user.userId}})" color="info">ویرایش</v-btn>
           </td>
         </tr>
         <tr v-if="userFilter.entityCount===0">
@@ -45,8 +45,8 @@
 
   const userFilter = computed(()=> store.state.userModule.usersFilter);
 
-
   onMounted(async()=>{
     store.dispatch("getUsers", {pageId:1, take:10})
+
   })
 </script>

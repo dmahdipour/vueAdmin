@@ -5,10 +5,14 @@ import userModule from './modules/userModule'
 
 export default createStore({
   state: {
+    isLoading: false,
   },
   getters: {
   },
   mutations: {
+    setLoading(state, loading){
+      state.isLoading = loading
+    }
   },
   actions: {
   },

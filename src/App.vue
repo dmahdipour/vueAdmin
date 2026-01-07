@@ -1,20 +1,15 @@
 <template>
   <v-app>
     <v-main>
-      <router-view/>
+      <api-loading ></api-loading>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
-<script>
+<script setup>
+  import ApiLoading from "@/components/ApiLoading.vue";
 
-export default {
-  name: 'App',
-
-  data: () => ({
-    //
-  }),
-}
 </script>
 
 <style>
