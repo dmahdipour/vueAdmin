@@ -72,9 +72,6 @@
                     toast.error(`مشکلی در عملیات رخ داد: ${err.response.data}`)
                 })
             }
-            else{
-                console.error("invalid")
-            }
         })
     }
 </script>
