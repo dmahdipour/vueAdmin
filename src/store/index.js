@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import VuexPersistence from 'vuex-persist';
+//import VuexPersistence from 'vuex-persist';
 
 import userModule from './modules/userModule'
 

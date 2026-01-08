@@ -8,7 +8,7 @@
 }
 
 body{
-    font-family: 'Vazirmatn';
+  font-family: 'Vazirmatn';
 }
 
 hr{
@@ -17,4 +17,10 @@ hr{
 }
 table, th, td{
   text-align: center !important;
+}
+.Vue-Toastification__container{
+  direction: rtl;
+}
+.Vue-Toastification__toast-body{
+  font-family: 'Vazirmatn';
 }

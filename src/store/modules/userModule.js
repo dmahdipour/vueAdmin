@@ -6,6 +6,7 @@ export default{
         usersFilter:{},
         singleUser:{},
     },
+
     mutations:{
         setUsers(state, users){
             state.usersFilter = users;
@@ -14,34 +15,51 @@ export default{
             state.singleUser = user
         }
     },
+    
     actions:{
-        getUsers(contex,{pageId, take}){
-            contex.commit("setLoading", true);
-            axios.get(`/api/user?pageId=${pageId}&take=${take}`).then(res=>{
-                contex.commit("setUsers", res.data)
-            }).catch(err => {
+        async getUsers(contex,{pageId, take}){
+            try{
+                contex.commit("setLoading", true);
+                const res = await axios.get(`/api/user?pageId=${pageId}&take=${take}`);
+                contex.commit("setUsers", res.data);
+            }
+            catch(err){
 
-            }).finally(()=>{
+            }
+            finally {
                 contex.commit("setLoading", false);
-            })
+            }
         },
         
-        getUserById(contex, userId){
-            contex.commit("setLoading", true);
-            axios.get(`/api/user/${userId}`).then(res=>{
-                contex.commit("setSingleUser", res.data)
-            }).catch(err => {
+        async getUserById(context, userId) {
+            try {
+                context.commit("setLoading", true);
+                const res = await axios.get(`/api/user/${userId}`);
+                context.commit("setSingleUser", res.data);
+                return res.data;
+            } catch (err) {
 
-            }).finally(()=>{
-                contex.commit("setLoading", false);
-            })
+            } finally {
+                context.commit("setLoading", false);
+            }
         },
 
-        addUser({commit}, user){
+        async addUser({commit}, user){
             commit("setLoading", true);
-            return axios.post("/api/user", user).finally(()=>{
+            try {
+                return await axios.post("/api/user", user);
+            } finally {
                 commit("setLoading", false);
-            })
+            }
+        },
+
+        async editUser({commit}, user){
+            commit("setLoading", true);
+            try {
+                return await axios.put("/api/user", user);
+            } finally {
+                commit("setLoading", false);
+            }
         }
     }
 }

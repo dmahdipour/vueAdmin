@@ -47,6 +47,5 @@
 
   onMounted(async()=>{
     store.dispatch("getUsers", {pageId:1, take:10})
-
   })
 </script>
