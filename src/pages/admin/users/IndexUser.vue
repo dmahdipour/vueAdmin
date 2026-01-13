@@ -2,7 +2,15 @@
   <div>
     <h1>لیست کاربران</h1>
     <hr>
-    <v-btn @click="router.push({name: 'addUser'})" color="success">افزودن</v-btn>
+    <v-btn @click="router.push({name: 'addUser'})" color="success">
+        <v-icon
+            right
+            dark
+        >
+            mdi-plus
+        </v-icon>
+      افزودن
+    </v-btn>
     <v-table class="mt-4 elevation-2">
       <thead>
         <tr>
@@ -13,15 +21,15 @@
         </tr>
       </thead>
       <tbody>
-          <tr v-for = "user in userFilter.users" :key="user.userId">
-            <td>{{ user.userName }}</td>
-            <td>{{ user.fullName }}</td>
+          <tr v-for = "item in userFilter.users" :key="item.userId">
+            <td>{{ item.userName }}</td>
+            <td>{{ item.fullName }}</td>
             <td>
-              <span v-if="user.role===1">مدیر</span>
-              <span v-if="user.role===0">کاربر</span>
+              <span v-if="item.role===1">مدیر</span>
+              <span v-if="item.role===0">کاربر</span>
             </td>
             <td>
-              <v-btn @click="router.push({name:'editUser', params:{id:user.userId}})" color="info">ویرایش</v-btn>
+              <v-btn @click="router.push({name:'editUser', params:{id:item.userId}})" color="info">ویرایش</v-btn>
             </td>
           </tr>
           <tr v-if="userFilter.entityCount===0">
@@ -29,25 +37,32 @@
           </tr>
       </tbody>
     </v-table>
-    <span>تعداد کل:  {{ userFilter.entityCount }}</span>
-    <span>تعداد صفحه:  {{ userFilter.pageCount }}</span>
-    <span> currentPage:  {{ userFilter.currentPage }}</span>
-    <span> startPage:  {{ userFilter.startPage }}</span>
-    <span> endPage:  {{ userFilter.endPage }}</span>
-    <span> take:  {{ userFilter.take }}</span>
+
+    <v-pagination
+      v-if="userFilter && userFilter?.pageCount>0"
+      v-model="pageId"
+      :length="userFilter.pageCount"
+      :total-visible="7"
+      next-icon="mdi-chevron-left"
+      prev-icon="mdi-chevron-right"
+    ></v-pagination>
   </div>
 </template>
 
 <script setup>
-  import router from '@/router';
-  import {computed, onMounted} from 'vue'
+  import {computed, onMounted, watch} from 'vue'
   import {useStore} from 'vuex'
 
   const store = useStore();
+  const pageId=ref(1);
   
   const userFilter = computed(()=> store.state.userModule.usersFilter);
 
+  watch(pageId, ()=>{
+    store.dispatch("getUsers", {pageId:pageId.value, take:10})
+  })
+
   onMounted(async()=>{
-    store.dispatch("getUsers", {pageId:1, take:10})
+    store.dispatch("getUsers", {pageId:pageId.value, take:10})
   })
 </script>

@@ -58,11 +58,15 @@
                         router.push({name:'users'})
                     }
                 }).catch(err=>{
+                    if (err.response.data) {
+                        toast.error(err.response.data)
+                    }
                     toast.error(`مشکلی در عملیات رخ داد`)
                 })
             }
         })
     }
+
 
 
     onMounted(async()=>{

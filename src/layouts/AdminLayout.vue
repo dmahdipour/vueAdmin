@@ -23,15 +23,21 @@
       >
         <v-list color="transparent">
             <router-link to="/admin">
-                <v-list-item prepend-icon="mdi-view-dashboard" title="داشبورد" v-ripple></v-list-item>
+              <v-list-item prepend-icon="mdi-view-dashboard" title="داشبورد" v-ripple></v-list-item>
             </router-link>
             <router-link to="/admin/users">
-                <v-list-item prepend-icon="mdi-forum" title="مدیریت کاربران" v-ripple></v-list-item>
+              <v-list-item prepend-icon="mdi-forum" title="مدیریت کاربران" v-ripple></v-list-item>
+            </router-link>
+            <router-link to="/admin/categories">
+              <v-list-item prepend-icon="mdi-card-outline" title="مدیریت دسته بندی ها" v-ripple></v-list-item>
+            </router-link>
+            <router-link to="/admin/posts">
+              <v-list-item prepend-icon="mdi-file-outline" title="مدیریت مطالب" v-ripple></v-list-item>
             </router-link>
         </v-list>
       </v-navigation-drawer>
 
-      <v-main style="height: 100vh;">
+      <v-main style="min-height: 100vh;">
         <div class="px-6 py-6">
           <router-view></router-view>
         </div>

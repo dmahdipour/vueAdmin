@@ -1,6 +1,8 @@
 
 import axios from '@/utils/axios';
+import {useToast} from "vue-toastification"
 
+const toast = useToast();
 export default{
     state:{
         usersFilter:{},
@@ -24,7 +26,7 @@ export default{
                 contex.commit("setUsers", res.data);
             }
             catch(err){
-
+                toast.error("مشکلی در عملیات رخ داده است")
             }
             finally {
                 contex.commit("setLoading", false);

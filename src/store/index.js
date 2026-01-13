@@ -2,6 +2,8 @@ import { createStore } from 'vuex'
 //import VuexPersistence from 'vuex-persist';
 
 import userModule from './modules/userModule'
+import categoryModule from './modules/categoryModule'
+import postModule from './modules/postModule'
 
 export default createStore({
   state: {
@@ -17,7 +19,7 @@ export default createStore({
   actions: {
   },
   modules: {
-    userModule
+    userModule, categoryModule, postModule
   },
   // plugins: [
   //   new VuexPersistence({
