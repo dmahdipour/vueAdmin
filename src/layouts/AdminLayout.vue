@@ -57,7 +57,11 @@
 
       <v-main style="min-height: 100vh;">
         <div class="px-6 py-6">
-          <router-view></router-view>
+          <router-view v-slot="{Component}">
+            <transition name="slide-fade">
+              <Component :is="Component" />
+            </transition>
+          </router-view>
         </div>
       </v-main>
     </v-layout>
@@ -66,7 +70,7 @@
 
 
 <script setup>
-  import { ref, watch } from 'vue'
+  import { ref, Transition, watch } from 'vue'
   
 
   const drawer = ref(true)
@@ -83,6 +87,7 @@
       color:white;
       text-decoration:none;
   }
+
   .v-list-item--active{
     color: white !important
   }

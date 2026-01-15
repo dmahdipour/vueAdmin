@@ -42,7 +42,11 @@
 
       <v-main style="min-height: 100vh;">
         <div class="px-6 py-6">
-          <router-view></router-view>
+          <router-view v-slot="{Component}">
+            <transition name="slide-fade">
+              <Component :is="Component" />
+            </transition>
+          </router-view>
         </div>
       </v-main>
     </v-layout>
@@ -60,7 +64,7 @@
   const store = useStore();
   const router = useRouter();
 
-  const drawer = ref(false)
+  const drawer = ref(true)
   const group = ref(null)
   const categories = ref([])
   const isSearchDisplay = ref(false)
@@ -97,5 +101,9 @@
   a{
       color:white;
       text-decoration:none;
+  }
+
+  .v-list-item--active{
+    color: white !important
   }
 </style>
