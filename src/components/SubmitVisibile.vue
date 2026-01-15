@@ -1,6 +1,8 @@
 <template>
   <div>
-    <v-btn type="submit" :disabled="isLoading" color="success" class="float-left">ثبت اطلاعات</v-btn>
+    <v-btn type="submit" :disabled="isLoading" color="success" class="float-left">
+      <slot>ثبت اطلاعات</slot>
+    </v-btn>
   </div>  
 </template>
 

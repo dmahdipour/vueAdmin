@@ -7,12 +7,10 @@
         <v-toolbar-title>پنل ادمین با vue</v-toolbar-title>
 
         <template v-if="$vuetify.display.mdAndUp">
-          <v-btn icon="mdi-magnify" variant="text"></v-btn>
-
-          <v-btn icon="mdi-filter" variant="text"></v-btn>
+          <v-btn icon="mdi-home" variant="text" @click="$router.push('/')"></v-btn>
         </template>
 
-        <v-btn icon="mdi-dots-vertical" variant="text"></v-btn>
+        <v-btn icon="mdi-chevron-left" variant="text" @click="$router.back()"></v-btn>
       </v-app-bar>
 
       <v-navigation-drawer 
@@ -22,17 +20,37 @@
         permanent
       >
         <v-list color="transparent">
-            <router-link to="/admin">
-              <v-list-item prepend-icon="mdi-view-dashboard" title="داشبورد" v-ripple></v-list-item>
+            <router-link to="/admin" v-slot="{isExactActive}">
+              <v-list-item
+                :active="isExactActive"
+                prepend-icon="mdi-view-dashboard" 
+                title="داشبورد" 
+                v-ripple
+              ></v-list-item>
             </router-link>
-            <router-link to="/admin/users">
-              <v-list-item prepend-icon="mdi-forum" title="مدیریت کاربران" v-ripple></v-list-item>
+            <router-link to="/admin/users" v-slot="{isActive}">
+              <v-list-item
+                :active="isActive" 
+                prepend-icon="mdi-forum" 
+                title="مدیریت کاربران" 
+                v-ripple
+              ></v-list-item>
             </router-link>
-            <router-link to="/admin/categories">
-              <v-list-item prepend-icon="mdi-card-outline" title="مدیریت دسته بندی ها" v-ripple></v-list-item>
+            <router-link to="/admin/categories" v-slot="{isActive}">
+              <v-list-item
+                :active="isActive" 
+                prepend-icon="mdi-card-outline" 
+                title="مدیریت دسته بندی ها" 
+                v-ripple
+              ></v-list-item>
             </router-link>
-            <router-link to="/admin/posts">
-              <v-list-item prepend-icon="mdi-file-outline" title="مدیریت مطالب" v-ripple></v-list-item>
+            <router-link to="/admin/posts" v-slot="{isActive}">
+              <v-list-item
+                :active="isActive" 
+                prepend-icon="mdi-file-outline" 
+                title="مدیریت مطالب" 
+                v-ripple
+              ></v-list-item>
             </router-link>
         </v-list>
       </v-navigation-drawer>
@@ -49,7 +67,6 @@
 
 <script setup>
   import { ref, watch } from 'vue'
-
   
 
   const drawer = ref(true)
@@ -65,5 +82,8 @@
   a{
       color:white;
       text-decoration:none;
+  }
+  .v-list-item--active{
+    color: white !important
   }
 </style>

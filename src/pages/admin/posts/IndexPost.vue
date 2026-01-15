@@ -71,7 +71,7 @@
   import { useToast } from 'vue-toastification';
   import {PostImageUrl} from '@/utils/imageUrls'
 //  npm install sweetalert2
-  import Swal from 'sweetalert2'
+  //import Swal from 'sweetalert2'
 
   const store = useStore();
   const router = useRouter();
@@ -87,30 +87,30 @@
   }
   
   const deletePost = (id)=>{
-    Swal.fire({
-      title: 'آیا از حذف اطمینان دارید',
-      // text: '',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonTxt: 'نه، بی خیال',
-      confirmButtonText: 'بله، حذفش کن'
-    }).then((result)=>{
-      if(result.confirm){
-        store.dispatch("deletePost", id).then(res=> {
-          if (res.status === 200) {
-            toast.success('حذف با موفقیت انجام شد')
-            store.dispatch("getPostByFilter")
-          }
-        })
-      }
-    }).catch(err=>{
-      if (err.response.data) {
-        toast.error(err.response.data)
-      }
-      toast.error('مشکلی در عملیات رخ داده است')
-    });
+    // Swal.fire({
+    //   title: 'آیا از حذف اطمینان دارید',
+    //   // text: '',
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   cancelButtonTxt: 'نه، بی خیال',
+    //   confirmButtonText: 'بله، حذفش کن'
+    // }).then((result)=>{
+    //   if(result.confirm){
+    //     store.dispatch("deletePost", id).then(res=> {
+    //       if (res.status === 200) {
+    //         toast.success('حذف با موفقیت انجام شد')
+    //         store.dispatch("getPostByFilter")
+    //       }
+    //     })
+    //   }
+    // }).catch(err=>{
+    //   if (err.response.data) {
+    //     toast.error(err.response.data)
+    //   }
+    //   toast.error('مشکلی در عملیات رخ داده است')
+    // });
   }
 
   watch(
